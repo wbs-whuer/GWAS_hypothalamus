@@ -1,0 +1,11 @@
+library(TwoSampleMR)
+exposure_data<- read_exposure_data("GWAS_phenotype.txt", sep=" ",snp_col = " SNP",chr_col = "CHR",pos_col = "BP",effect_allele_col = "A1",other_allele_col = "A2",beta_col = "BETA",se_col = "SE",pval_col = "P", samplesize_col = "N")
+exposure_data <- exposure_data[exposure_data$pval.exposure<5e-8,]
+exposure_data_clumped<- clump_data(exposure_data)
+outcome_data<-read_outcome_data(exposure_data_clumped$SNP,filename="AD.txt",sep=" ",snp_col = "MarkerName",effect_allele_col = "Effect_allele", other_allele_col = "Non_Effect_allele", beta_col = "Beta",se_col = "SE",pval_col = "Pvalue")
+data <- harmonise_data(exposure_dat = exposure_data_clumped, outcome_dat = outcome_data)
+results <- mr(data)
+generate_odds_ratios(results)
+mr_heterogeneity(data)
+mr_pleiotropy_test(data)
+ 

@@ -1,0 +1,20 @@
+#####Univariate and Multivariate GWAS#####
+matlab
+for i=1:22
+pheno = 'hypothalamus_residual.txt';
+bfile = strcat('UKB_gene_v3_imp_imag_qc_chr',num2str(i));
+out = strcat('result_chr',num2str(i));
+mostest;
+clearvars
+end 
+
+#extract univariate GWAS result
+pheno="hypothalamus"
+for i in {1..22};
+do
+python \
+process_results_ext.py \
+UKB_gene_v3_imp_imag_qc_chr${i}.bim \
+result_chr${i} \
+univariate/result_chr${i} \
+;done

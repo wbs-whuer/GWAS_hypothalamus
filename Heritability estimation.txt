@@ -1,0 +1,9 @@
+#####Common variant-based heritability #####
+gcta \
+--grm GRM \
+--pheno phenotype.txt \
+--mpheno 1 \
+--reml \
+--qcovar qcovar.txt \
+--covar covar.txt \
+--out phenotype1_h2

@@ -1,0 +1,40 @@
+pheno="pheno_name"
+for i in {1..22};do
+docker run -v /home/dnanexus/:/home/dnanexus/ -w /home/dnanexus/wzhou88/saige:1.1.6 step1_fitNULLGLMM.R \
+--sparseGRMFile=/home/dnanexus/GRM/UKB_GRM.mtx \
+--sparseGRMSampleIDFile=/home/dnanexus/GRM/UKB_GRM.mtx.sampleIDs.txt \
+    --plinkFile=/home/dnanexus/ukb_wes_chr${i}_sample_qc_final_unrelated \
+    --useSparseGRMtoFitNULL=FALSE   \
+    --useSparseGRMforVarRatio=TRUE \
+    --phenoFile=/home/dnanexus/Ventricle_phenotype.txt \
+    --covarColList=sex,age,age2,site1,site2,ICV,PC1,PC2,PC3,PC4,PC5,PC6,PC7,PC8,PC9,PC10 \
+    --qCovarColList=sex,site1,site2  \
+    --phenoCol=${pheno} \
+    --invNormalize=T \
+    --sampleIDColinphenoFile=eid \
+    --isCovariateOffset=FALSE \
+    --traitType=quantitative       \
+    --nThreads=60   \
+--isCateVarianceRatio=FALSE	\
+--outputPrefix=/home/dnanexus/STEP1/sparseGRM_chr${i}_${pheno} \
+    --IsOverwriteVarianceRatioFile=TRUE	
+
+docker run -v /home/dnanexus/:/home/dnanexus/ -w /home/dnanexus/wzhou88/saige:1.1.6 step2_SPAtests.R \
+     --bedFile=/home/dnanexus/ukb_wes_chr${i}_sample_qc_final_unrelated.bed \
+     --bimFile=/home/dnanexus/ukb_wes_chr${i}_sample_qc_final_unrelated.bim \
+     --famFile=/home/dnanexus/ukb_wes_chr${i}_sample_qc_final_unrelated.fam \
+--SAIGEOutputFile=/home/dnanexus/STEP2/sparseGRM_chr${i}_${pheno} \
+     --AlleleOrder=alt-first \
+     --minMAF=0 \
+     --minMAC=0.5 \
+--GMMATmodelFile=/home/dnanexus/STEP1/sparseGRM_chr${i}_${pheno}.rda \
+--varianceRatioFile=/home/dnanexus/STEP1/sparseGRM_chr${i}_${pheno}.varianceRatio.txt \
+--sparseGRMFile=/home/dnanexus/GRM/UKB_GRM.mtx \
+--sparseGRMSampleIDFile=/home/dnanexus/GRM/UKB_GRM.mtx.sampleIDs.txt \
+     --groupFile=/home/dnanexus/gene_group_chr${i}.txt \
+     --annotation_in_groupTest="lof,missense:lof" \
+     --maxMAF_in_groupTest=0.01 \
+     --is_output_markerList_in_groupTest=TRUE \
+     --LOCO=FALSE \
+     --is_fastTest=TRUE
+done

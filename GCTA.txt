@@ -1,0 +1,60 @@
+nohup \
+/mnt/storage/home1/Software/gcta/gcta64 \
+--reml-bivar 1 7 \
+--reml-bivar-nocove \
+--grm /mnt/storage/home1/csd_data/gcta/GRM \
+--keep /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/eid_ls_qc_32956.txt \
+--pheno /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_pheno/pheno.txt \
+--out /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_results/trait_1 \
+--thread-num 4 &
+
+
+nohup \
+/mnt/storage/home1/Software/gcta/gcta64 \
+--reml-bivar 2 7 \
+--reml-bivar-nocove \
+--grm /mnt/storage/home1/csd_data/gcta/GRM \
+--keep /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/eid_ls_qc_32956.txt \
+--pheno /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_pheno/pheno.txt \
+--out /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_results/trait_2 \
+--thread-num 4 &
+
+nohup \
+/mnt/storage/home1/Software/gcta/gcta64 \
+--reml-bivar 3 7 \
+--reml-bivar-nocove \
+--grm /mnt/storage/home1/csd_data/gcta/GRM \
+--keep /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/eid_ls_qc_32956.txt \
+--pheno /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_pheno/pheno.txt \
+--out /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_results/trait_3 \
+--thread-num 4 &
+
+nohup \
+/mnt/storage/home1/Software/gcta/gcta64 \
+--reml-bivar 4 7 \
+--reml-bivar-nocove \
+--grm /mnt/storage/home1/csd_data/gcta/GRM \
+--keep /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/eid_ls_qc_32956.txt \
+--pheno /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_pheno/pheno.txt \
+--out /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_results/trait_4 \
+--thread-num 6 &
+
+nohup \
+/mnt/storage/home1/Software/gcta/gcta64 \
+--reml-bivar 5 7 \
+--reml-bivar-nocove \
+--grm /mnt/storage/home1/csd_data/gcta/GRM \
+--keep /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/eid_ls_qc_32956.txt \
+--pheno /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_pheno/pheno.txt \
+--out /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_results/trait_5 \
+--thread-num 6 &
+
+nohup \
+/mnt/storage/home1/Software/gcta/gcta64 \
+--reml-bivar 6 7 \
+--reml-bivar-nocove \
+--grm /mnt/storage/home1/csd_data/gcta/GRM \
+--keep /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/eid_ls_qc_32956.txt \
+--pheno /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_pheno/pheno.txt \
+--out /mnt/storage/home1/csd_data/Proj_HT_GWA/GC_GCTA/GCTA_results/trait_6 \
+--thread-num 6 &
